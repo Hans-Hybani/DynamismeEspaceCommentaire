@@ -75,7 +75,6 @@ function DeleteFroms() {
 
 //Cette fonction execute toute les autres fonctions
 function Run(){
-        block(event)
         addComment()
         DeleteFroms()
 }
