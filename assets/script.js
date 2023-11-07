@@ -47,7 +47,7 @@ function addComment(){
                 MessageError.style.display="block"
         }else if (nom.value == "" && (prenom.value && areaText.value) !== "") {
                 MessageError.style.display="block"
-        }else if (areaText.value == "" && (prenom.value && nom.value) !== "") {
+        }else if (textArea.value == "" && (prenom.value && nom.value) !== "") {
                 MessageError.style.display="block"
         }else{
                 liste.appendChild(divPrincipale)
