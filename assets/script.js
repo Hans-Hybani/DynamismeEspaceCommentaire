@@ -8,7 +8,6 @@ form.addEventListener('submit',block)
 function addComment(){
 
         let divPrincipale = document.createElement('div')
-        divPrincipale.className = "flex space-x-4 text-sm text-gray-500"
 
         let divSecondaire = document.createElement('div')
         let titreTrois = document.createElement('h3')
@@ -19,6 +18,7 @@ function addComment(){
         let prenom = document.getElementById('first-name')
         let nom = document.getElementById('last-name')
         let textArea = document.getElementById('message') 
+        let MessageError = document.getElementById('error-message')
 
         let prenomText = document.createTextNode(prenom.value)
         let espace = document.createTextNode(" ")
@@ -29,17 +29,30 @@ function addComment(){
         divSecondaire.setAttribute('class',"flex-1 py-10 border-t border-gray-200")
         titreTrois.setAttribute('class',"font-medium text-gray-900")
         divTertiaire.setAttribute('class',"prose prose-sm mt-4 max-w-none text-gray-500")
+        // MessageError.style.display="block"
 
-        liste.appendChild(divPrincipale)
-        divPrincipale.appendChild(divSecondaire)
-        divSecondaire.appendChild(titreTrois)
-        divSecondaire.appendChild(divTertiaire)
-        divSecondaire.appendChild(paragraph)
+        if ((prenom.value && nom.value && areaText.value) == "") {
+                MessageError.style.display="block"
+        }else if(prenom.value == "" && (nom.value && areaText.value) !== ""){
+                MessageError.style.display="block"
+        }else if (nom.value == "" && (prenom.value && areaText.value) !== "") {
+                MessageError.style.display="block"
+        }else if (areaText.value == "" && (prenom.value && nom.value) !== "") {
+                MessageError.style.display="block"
+        }else{
+                liste.appendChild(divPrincipale)
+                divPrincipale.appendChild(divSecondaire)
+                divSecondaire.appendChild(titreTrois)
+                divSecondaire.appendChild(divTertiaire)
+                divSecondaire.appendChild(paragraph)
 
-        titreTrois.appendChild(prenomText)
-        titreTrois.appendChild(espace)
-        titreTrois.appendChild(nomText)
-        paragraph.appendChild(areaText)
+                titreTrois.appendChild(prenomText)
+                titreTrois.appendChild(espace)
+                titreTrois.appendChild(nomText)
+                paragraph.appendChild(areaText)
+
+                MessageError.style.display="none"
+        }       
 }
 
 function DeleteFroms() {
